@@ -101,6 +101,9 @@
 
                                 <!--messaggi-->
                                 <div class="messages">
+                                    <div class="mb-5" :class="{'received': message.status === 'received', 'sent': message.status === 'sent'}" v-for="(message, index) in contacts[activeImage].messages">
+                                        <span>{{ contacts[activeImage].messages[index].message }}</span>
+                                    </div>
                                 </div>
 
                                 <!--invio nuovo messaggio-->
