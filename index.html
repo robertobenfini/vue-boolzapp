@@ -103,6 +103,7 @@
                                 <div class="messages">
                                     <div class="mb-5" :class="{'received': message.status === 'received', 'sent': message.status === 'sent'}" v-for="(message, index) in contacts[activeImage].messages">
                                         <span>{{ contacts[activeImage].messages[index].message }}</span>
+                                        <div class="time-message">15:30</div>
                                     </div>
                                 </div>
 
@@ -112,7 +113,7 @@
                                     <!--input nuovo messaggio-->
                                     <div class="testo d-flex align-items-center p-2">
                                         <i class="fa-regular fa-face-smile mx-5"></i>
-                                        <input type="text" class="form-control p-2" placeholder="Scrivi un messaggio">
+                                        <input type="text" class="form-control p-2" placeholder="Scrivi un messaggio" v-model="new_message" @keyup.enter="addMessage()">
                                         <i class="fas fa-microphone col-auto mx-5"></i>
                                     </div>
                                 </div>

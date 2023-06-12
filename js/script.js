@@ -170,7 +170,10 @@ createApp({
             ],
 
             //contiene l'indice dell'array
-            activeImage: 0
+            activeImage: 0,
+
+            //contiene il testo del nuovo messaggio
+            new_message: '',
         }
     },
 
@@ -179,6 +182,33 @@ createApp({
         //funzione che richiama l'indice
         imgActive(index){
             this.activeImage = index;
-        }
-    },
+        },
+        
+        //funzione per aggiungere nuovo messaggio
+        addMessage() {
+
+            //nuovo oggetto dell'array messages
+            let obj = {
+                date: '',
+                message: this.new_message,
+                status: 'sent'
+            };
+
+            //pusho l'obj nell'arrary messages
+            this.contacts[this.activeImage].messages.push(obj);
+
+            this.new_message = ''; // Resetta il campo di input
+            
+            //nuovo oggetto del messaggio di default
+            new_obj = {
+                date: '',
+                message: 'ok',
+                status: 'received'
+            }
+            
+            setTimeout(() => {
+                this.contacts[this.activeImage].messages.push(new_obj);
+            },1000);
+        },
+    }
 }).mount('#app');
