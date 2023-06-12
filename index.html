@@ -57,7 +57,7 @@
 
                                 <!--contatti-->
                                 <div class="contacts">
-                                    <div class="profile-2 bg-white" v-for="contact in contacts">
+                                    <div class="profile-2 bg-white" v-for="(contact,index) in contacts" @click="imgActive(index)">
                                         <div class="h-100 d-flex justify-content-between">
                                             <div class="d-flex">
                                                 <img :src=contact.avatar alt="io" class="h-100 rounded-circle p-2">
@@ -84,9 +84,9 @@
                                 <div class="user">
                                     <div class="profile d-flex justify-content-between align-items-center">
                                         <div class="h-100 d-flex align-items-center">
-                                            <img src="./img/avatar_1.jpg" alt="io" class="h-100 rounded-circle p-2">
+                                            <img :src="contacts[activeImage].avatar" alt="io" class="h-100 rounded-circle p-2">
                                             <div>
-                                                <span><strong>Michele</strong></span>
+                                                <span><strong>{{ contacts[activeImage].name }}</strong></span>
                                                 <br>
                                                 <span class="last-access">Ultimo accesso oggi alle 12:00</span>
                                             </div>
@@ -101,7 +101,6 @@
 
                                 <!--messaggi-->
                                 <div class="messages">
-
                                 </div>
 
                                 <!--invio nuovo messaggio-->

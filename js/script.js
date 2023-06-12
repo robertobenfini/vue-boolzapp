@@ -167,11 +167,18 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+
+            //contiene l'indice dell'array
+            activeImage: 0
         }
     },
 
     methods: {
 
+        //funzione che richiama l'indice
+        imgActive(index){
+            this.activeImage = index;
+        }
     },
 }).mount('#app');
