@@ -174,6 +174,8 @@ createApp({
 
             //contiene il testo del nuovo messaggio
             new_message: '',
+
+            searchText: ''
         }
     },
 
@@ -210,5 +212,13 @@ createApp({
                 this.contacts[this.activeImage].messages.push(new_obj);
             },1000);
         },
+
+        //funzione di controllo search bar
+        searchContact(){
+            let nameSearched = this.searchText.toLowerCase(); 
+            this.contacts.forEach((contact) => {
+            let contactName = contact.name.toLowerCase();
+            contact.visible = contactName.includes(nameSearched)})
+        }
     }
 }).mount('#app');

@@ -50,14 +50,14 @@
                                       <!--search box-->
                                     <div class="form-group has-search p-2">
                                         <span class="fa fa-search form-control-feedback"></span>
-                                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="searchText" @input="searchContact()">
                                     </div>
   
                                 </div>
 
                                 <!--contatti-->
                                 <div class="contacts">
-                                    <div class="profile-2 bg-white" v-for="(contact,index) in contacts" @click="imgActive(index)">
+                                    <div class="profile-2 bg-white" v-for="(contact,index) in contacts" :class="contact.visible === true ? 'block': 'none'"@click="imgActive(index)">
                                         <div class="h-100 d-flex justify-content-between">
                                             <div class="d-flex">
                                                 <img :src=contact.avatar alt="io" class="h-100 rounded-circle p-2">
@@ -101,7 +101,7 @@
 
                                 <!--messaggi-->
                                 <div class="messages">
-                                    <div class="mb-5" :class="{'received': message.status === 'received', 'sent': message.status === 'sent'}" v-for="(message, index) in contacts[activeImage].messages">
+                                    <div class="mb-2" :class="{'received': message.status === 'received', 'sent': message.status === 'sent'}" v-for="(message, index) in contacts[activeImage].messages">
                                         <span>{{ contacts[activeImage].messages[index].message }}</span>
                                         <div class="time-message">15:30</div>
                                     </div>
