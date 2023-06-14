@@ -77,11 +77,11 @@
                                                 <div>
                                                     <span><strong>{{ contact.name }}</strong></span>
                                                     <br>
-                                                    <span class="last-message">{{ contact.messages[contact.messages.length-1].message }}</span>
+                                                    <span class="last-message">{{ getLastMessage(contact) }}</span>
                                                 </div>
                                             </div>
                                             <div class="time-contacts">
-                                                {{ contact.messages[contact.messages.length-1].date.slice(0,10) }}
+                                                {{ getLastLogin(contact).slice(0, 9) }}
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                             <div>
                                                 <span><strong>{{ contacts[activeImage].name }}</strong></span>
                                                 <br>
-                                                <span class="last-access">{{ contacts[activeImage].messages[contacts[activeImage].messages.length-1].date }}</span>
+                                                <span class="last-access">Ultimo accesso alle: {{ newDate().slice(10, 19) }}</span>
                                             </div>
                                         </div>
                                         <div class="icon-profile">
@@ -115,8 +115,8 @@
                                 <!--messaggi-->
                                 <div class="messages">
                                     <div class="mb-2 block2" :class="{'received': message.status === 'received', 'sent': message.status === 'sent'}" v-for="(message, index) in contacts[activeImage].messages">
-                                        <span>{{ contacts[activeImage].messages[index].message }}</span>
-                                        <div class="time-message">{{ contacts[activeImage].messages[index].date }}</div>
+                                        <span>{{ message.message }}</span>
+                                        <div class="time-message">{{ message.date.slice(11,16) }}</div>
                                         <div class="btn-group">
                                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                             </button>
