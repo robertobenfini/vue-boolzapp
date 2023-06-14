@@ -244,7 +244,7 @@ createApp({
             return '';
         },
 
-        //funzione per ottenere l'ultimo accesso
+        //funzioni per ottenere l'ultimo accesso
         getLastLogin(contact) {
             let messages = contact.messages;
             if (messages.length > 0) {
@@ -252,6 +252,15 @@ createApp({
               return last_login.date;
             }
             return '';
-        }    
+        },
+
+        getTimeLogin() {
+            let messages = this.contacts[this.activeImage].messages;
+            if (messages.length > 0) {
+              let last_time_login = messages[messages.length - 1];
+              return last_time_login.date;
+            }
+            return '';
+        } 
     }
 }).mount('#app');
